@@ -3,20 +3,20 @@
  */
 
 @mixin dark-syntax {
-  --language-border-color: #2d2d2d;
-  --highlight-bg-color: #151515;
-  --highlighter-rouge-color: #c9def1;
-  --highlight-lineno-color: #808080;
-  --inline-code-bg: rgba(255, 255, 255, 0.05);
-  --code-color: #b0b0b0;
-  --code-header-text-color: #6a6a6a;
-  --code-header-muted-color: #353535;
-  --code-header-icon-color: #565656;
-  --clipboard-checked-color: #2bcc2b;
-  --filepath-text-color: #cacaca;
+  --language-border-color: rgb(52, 52, 52);
+  --highlight-bg-color: rgb(33, 68, 33);
+  --highlighter-rouge-color: #000000;
+  --highlight-lineno-color: #0f0;
+  --inline-code-bg: rgba(0, 0, 0, 0.05);
+  --code-color: #0f0;
+  --code-header-text-color: #f00;
+  --code-header-muted-color: #f00;
+  --code-header-icon-color: #f00;
+  --clipboard-checked-color: #f00;
+  --filepath-text-color: #f00;
 
   .highlight .gp {
-    color: #87939d;
+    color: #0f0;
   }
 
   /* --- Syntax highlight theme from `rougify style base16.dark` --- */
@@ -31,13 +31,13 @@
 
   .highlight,
   .highlight .w {
-    color: #d0d0d0;
-    background-color: #151515;
+    color: #0f0;
+    background-color: #000000;
   }
 
   .highlight .err {
     color: #151515;
-    background-color: #ac4142;
+    background-color: #0f0;
   }
 
   .highlight .c,
