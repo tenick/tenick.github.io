@@ -25,40 +25,34 @@ $$\exists n, a \in \mathbb{Z}^+ \colon gcd(n, a) = 1 \land d(n\cdot a) = n \Long
 
 ## Proof
 
-<!-- $$
-\prod_{i=1}^{n} x_i - 1
-$$
-
-$$
-\begin{equation}
-  a^2 + b^2 = c^2
-  \label{eq:test}
-\end{equation}
-$$
-
-Can be referenced as \eqref{eq:test}. -->
-
 Let's start by defining a property $P(x, a):$
 
-$$P(x, a) \equiv GCD(a, x) = 1 \land d(x\cdot a) = x$$ 
+$$P(x, a) \equiv GCD(x, a) = 1 \land d(x\cdot a) = x$$ 
+
+$$x, a\in \mathbb{Z}^+$$
 
 We are given $n$ such that $n \in \mathbb{Z}^+$
 
-What $a$ should we pick to satisfy $P(n, a)$ or show that no such $a$ exists?\
-\
-First, let us check how to pick an $a$ such that $GCD(n, a) = 1$\
-\
+What $a$ should we pick to satisfy $P(n, a)$ or show that no such $a$ exists?
+
+First, let us check how to pick $a$ such that $GCD(n, a) = 1$
+
 The fundamental theorem of arithmetic states that each integer $x > 1$
 can be represented uniquely as a product of prime numbers:
 
-$$\forall n \in \mathbb{Z}^+, x = p_{1}^{e_{1}} \cdot p_{2}^{e_{2}} \cdot p_{3}^{e_{3}} \cdot ...$$
+$$
+\begin{equation}
+\forall n \in \mathbb{Z}^+, x = p_{1}^{e_{1}} \cdot p_{2}^{e_{2}} \cdot p_{3}^{e_{3}} \cdot ...
+\label{eq:1}
+\end{equation}
+$$
 
 or equivalently: 
 
 $$n = \prod_{i=1}^\infty p_ie^i$$ 
 
-Where $p_i$ denotes the $i_{th}$ prime number.\
-\
+Where $p_i$ denotes the $i_{th}$ prime number.
+
 With this in mind, we can say that:
 
 $$x = p_{1}^{e_{1}} \cdot p_{2}^{e_{2}} \cdot p_{3}^{e_{3}} \cdot ...$$
@@ -71,26 +65,40 @@ Let $P_n$ be the set of all prime factors of $n$. Given the definition
 of GCD above, we can see that picking an $a$ such that
 $P_a \cap P_n \neq \varnothing$ will give a $GCD(x,y) > 1$. So we must
 pick an $a$ such that: $$\forall p \in P_a, p \not\in P_n$$ This will
-guarantee that $GCD(n, a) = 1$\
-\
-Lastly, how do we make sure that $d(n\cdot a) = n$ or that $a$ doesn't
-exist?\
-\
-Again, by the fundamental theorem of arithmetic, we can say that:
+guarantee that $GCD(n, a) = 1$
 
-$$n = p_{1}^{e_{1}} \cdot p_{2}^{e_{2}} \cdot p_{3}^{e_{3}} \cdot ...$$
+Now, how do we make sure that $d(n\cdot a) = n$ or that $a$ doesn't exist?
+
+Again, by the fundamental theorem of arithmetic, we can define d(n) like this:
+
+$$n = p_{1}^{e_{1}} \cdot p_{2}^{e_{2}} \cdot p_{3}^{e_{3}} \cdot ... \tag{by $\eqref{eq:1}$}$$ 
 
 $$d(n) = max(1, e_{1}+1) \cdot max(1, e_{2}+1) \cdot max(1, e_{3}+1) \cdot ...$$
 
-Since $a$ must not have any prime factor that is in $P_a$:
+$$d(n)\in \mathbb{Z}^+$$
 
-$$a = p_{1}^{f_{1}} \cdot p_{2}^{f_{2}} \cdot p_{3}^{f_{3}} \cdot ...$$
+Since we must satisfy $GCD(n, a) = 1$, $a$ must not have any prime factor that is in $P_n$:
 
-$$k = f_{1}\cdot f_{2} \cdot f_{3}$$ 
+$$a = q_{1}^{f_{1}} \cdot q_{2}^{f_{2}} \cdot q_{3}^{f_{3}} \cdot ... \tag{by $\eqref{eq:1}$}$$
 
-$$d(n\cdot a) = d(n)\cdot k$$
+$$d(a) = max(1, f_{1}+1)\cdot max(1, f_{2}+1) \cdot max(1, f_{3}+1) \cdot ...$$ 
 
-Notice that we can always form any such $k$, so as long as $d(n)\mid n$.
+$$
+\begin{equation}
+d(n\cdot a) = d(n)\cdot d(a)
+\label{eq:2}
+\end{equation}
+$$
+
+Notice that we can always form any integers we want for $d(a)$ (as there are infinitely many prime numbers)
+
+Finally, in order for $d(n \cdot a)$ to equal $n$:
+
+$$ n = d(n) \cdot d(a) \tag{by $\eqref{eq:2}$}$$
+
+$$ 
+d(n) \mid n\tag*{$\blacksquare$}
+$$
 
 ## Code
 ```c++
